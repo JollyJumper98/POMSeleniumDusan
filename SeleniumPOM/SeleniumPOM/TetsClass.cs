@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using SeleniumPOM.Driver;
 using SeleniumPOM.Page;
+using System.Security.Cryptography.X509Certificates;
 
 namespace SeleniumPOM;
 
@@ -32,14 +33,27 @@ public class TestClass
     {
 
         Login("execute", "automation");
+        _homePage.Initial.SendKeys("DD");
+        _homePage.Title("Mr.");
+        _homePage.FirstName.SendKeys("Dusan");
+        _homePage.MiddleName.SendKeys("Dobric");
+        _homePage.Female.Click();
+        _homePage.Hindi.Click();
+        _homePage.SaveButton.Click();
+
+       
     }
 
     [Test]
     public void TC02_OpenPopUp_ShouldDisplayed()
     {
         Login("execute", "automation");
+        _homePage.HtmlPopup.Click();
+        
 
-    
+
+
+
     }
 
 
@@ -47,8 +61,7 @@ public class TestClass
     public void TC03_OpenAlert_ShouldDisplayed()
     {
         Login("execute", "automation");
-
-     
+        _homePage.Alert();
     }
 
 
